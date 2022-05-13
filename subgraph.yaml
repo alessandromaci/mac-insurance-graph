@@ -1,0 +1,27 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: MacInsuranceMain
+    network: rinkeby
+    source:
+      address: "0x4747005972d3471062405952f1c029d29F301c17"
+      abi: MacInsuranceMain
+      startBlock: 10665408
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - InsuranceRequestCreated
+        - PoolUpdated
+      abis:
+        - name: MacInsuranceMain
+          file: ./abis/MacInsuranceMain.json
+      eventHandlers:
+        - event: InsuranceRequestCreated(uint16,address,address,uint256,uint256)
+          handler: handleInsuranceRequestCreated
+        - event: PoolUpdated(uint16,address,int256,int256,uint8,uint256,uint256,uint256)
+          handler: handlePoolUpdated
+      file: ./src/mapping.ts

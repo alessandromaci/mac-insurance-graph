@@ -1,0 +1,267 @@
+[
+  { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" },
+  { "inputs": [], "name": "EndDateEarlierThanStartDate", "type": "error" },
+  { "inputs": [], "name": "InsuranceAlreadyRequested", "type": "error" },
+  { "inputs": [], "name": "InsuranceInActivePeriod", "type": "error" },
+  { "inputs": [], "name": "NotEnoughInsuranceLiquidity", "type": "error" },
+  { "inputs": [], "name": "NotEnoughTokenBalance", "type": "error" },
+  { "inputs": [], "name": "PoolIdNotCreated", "type": "error" },
+  { "inputs": [], "name": "ReimburesementRequirementNotMet", "type": "error" },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint16",
+        "name": "poolId",
+        "type": "uint16"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "tokenAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "insuranceRequester",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "liquidtyToInsure",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "fee",
+        "type": "uint256"
+      }
+    ],
+    "name": "InsuranceRequestCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint16",
+        "name": "poolId",
+        "type": "uint16"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "tokenAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "int256",
+        "name": "basePrice",
+        "type": "int256"
+      },
+      {
+        "indexed": false,
+        "internalType": "int256",
+        "name": "tresholdPrice",
+        "type": "int256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint8",
+        "name": "fee",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "liquidityAdded",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "startDate",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "endDate",
+        "type": "uint256"
+      }
+    ],
+    "name": "PoolUpdated",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "id",
+    "outputs": [{ "internalType": "uint16", "name": "", "type": "uint16" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "_tokenAddress", "type": "address" },
+      { "internalType": "address", "name": "_priceFeed", "type": "address" },
+      {
+        "internalType": "int256",
+        "name": "_insuranceLossCoverage",
+        "type": "int256"
+      },
+      { "internalType": "uint8", "name": "_fee", "type": "uint8" },
+      {
+        "internalType": "uint256",
+        "name": "_startDateFromDeployInSeconds",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_endDateFromDeployInSeconds",
+        "type": "uint256"
+      }
+    ],
+    "name": "initPool",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "uint16", "name": "id", "type": "uint16" },
+          {
+            "internalType": "address",
+            "name": "tokenAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "totalLiquidity",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "priceLossCover",
+            "type": "uint256"
+          },
+          { "internalType": "int256", "name": "basePrice", "type": "int256" },
+          {
+            "internalType": "int256",
+            "name": "insuranceTreshold",
+            "type": "int256"
+          },
+          { "internalType": "uint8", "name": "fee", "type": "uint8" },
+          { "internalType": "uint256", "name": "startDate", "type": "uint256" },
+          { "internalType": "uint256", "name": "endDate", "type": "uint256" }
+        ],
+        "internalType": "struct DataTypes.PoolData",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint16", "name": "", "type": "uint16" },
+      { "internalType": "address", "name": "", "type": "address" }
+    ],
+    "name": "insuranceRequests",
+    "outputs": [
+      { "internalType": "uint16", "name": "id", "type": "uint16" },
+      {
+        "internalType": "address",
+        "name": "insuranceRequester",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "liquidtyToInsure",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "reimbursementAmount",
+        "type": "uint256"
+      },
+      { "internalType": "uint256", "name": "fee", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint16", "name": "", "type": "uint16" }],
+    "name": "liquiditySupplyList",
+    "outputs": [
+      { "internalType": "uint16", "name": "id", "type": "uint16" },
+      {
+        "internalType": "address",
+        "name": "liquidityProvider",
+        "type": "address"
+      },
+      { "internalType": "uint256", "name": "liquidityAdded", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint16", "name": "", "type": "uint16" }],
+    "name": "poolDataList",
+    "outputs": [
+      { "internalType": "uint16", "name": "id", "type": "uint16" },
+      { "internalType": "address", "name": "tokenAddress", "type": "address" },
+      {
+        "internalType": "uint256",
+        "name": "totalLiquidity",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "priceLossCover",
+        "type": "uint256"
+      },
+      { "internalType": "int256", "name": "basePrice", "type": "int256" },
+      {
+        "internalType": "int256",
+        "name": "insuranceTreshold",
+        "type": "int256"
+      },
+      { "internalType": "uint8", "name": "fee", "type": "uint8" },
+      { "internalType": "uint256", "name": "startDate", "type": "uint256" },
+      { "internalType": "uint256", "name": "endDate", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint16", "name": "_id", "type": "uint16" },
+      { "internalType": "uint256", "name": "_amount", "type": "uint256" }
+    ],
+    "name": "requestInsurance",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint16", "name": "_id", "type": "uint16" }],
+    "name": "requestReimbursement",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint16", "name": "_id", "type": "uint16" },
+      { "internalType": "uint256", "name": "_amount", "type": "uint256" }
+    ],
+    "name": "supplyPool",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

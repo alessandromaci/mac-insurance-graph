@@ -1,0 +1,22 @@
+type PoolEntity @entity {
+  id: ID!
+  createdAtTimestamp: BigInt!
+  poolId: Int!
+  tokenAddress: Bytes! # address
+  basePrice: BigInt!
+  tresholdPrice: BigInt!
+  feePercentage: Int!
+  insuranceLiquidityAdded: BigInt!
+  startDate: BigInt!
+  endDate: BigInt!
+}
+
+type InsuranceRequestEntity @entity {
+  id: ID!
+  createdAtTimestamp: BigInt!
+  poolId: Int!
+  tokenAddress: Bytes! # token address
+  insuranceRequester: Bytes! # from address
+  feeAmount: BigInt!
+  insuranceLiquidityRequest: BigInt!
+}
