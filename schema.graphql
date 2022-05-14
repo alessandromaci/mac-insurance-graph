@@ -9,6 +9,7 @@ type PoolEntity @entity {
   insuranceLiquidityAdded: BigInt!
   startDate: BigInt!
   endDate: BigInt!
+  state: String!
 }
 
 type InsuranceRequestEntity @entity {

@@ -122,6 +122,15 @@ export class PoolEntity extends Entity {
   set endDate(value: BigInt) {
     this.set("endDate", Value.fromBigInt(value));
   }
+
+  get state(): string {
+    let value = this.get("state");
+    return value!.toString();
+  }
+
+  set state(value: string) {
+    this.set("state", Value.fromString(value));
+  }
 }
 
 export class InsuranceRequestEntity extends Entity {
