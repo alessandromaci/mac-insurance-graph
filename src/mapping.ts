@@ -25,6 +25,8 @@ export function handleInsuranceRequestCreated(
   insuranceRequestEntity.feeAmount = event.params.fee;
   insuranceRequestEntity.insuranceLiquidityRequest =
     event.params.liquidtyToInsure;
+
+  insuranceRequestEntity.save();
 }
 
 export function handlePoolUpdated(event: PoolUpdated): void {
