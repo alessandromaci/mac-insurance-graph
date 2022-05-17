@@ -6,7 +6,7 @@ dataSources:
     name: MacInsuranceMain
     network: rinkeby
     source:
-      address: "0x4747005972d3471062405952f1c029d29F301c17"
+      address: "0xaEE4E8F123632bf55C92760802e49Bfd993aA904"
       abi: MacInsuranceMain
       startBlock: 10665408
     mapping:
