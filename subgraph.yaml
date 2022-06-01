@@ -1,4 +1,4 @@
-specVersion: 0.0.2
+specVersion: 0.0.5
 schema:
   file: ./schema.graphql
 dataSources:
@@ -6,9 +6,9 @@ dataSources:
     name: MacInsuranceMain
     network: rinkeby
     source:
-      address: "0xaEE4E8F123632bf55C92760802e49Bfd993aA904"
+      address: "0xF082bb00Ed368fCA5ec554395A2c2a16b5815De5"
       abi: MacInsuranceMain
-      startBlock: 10665408
+      startBlock: 10767217
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
